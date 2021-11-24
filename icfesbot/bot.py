@@ -9,7 +9,7 @@ class MyBot(ActivityHandler):
     # See https://aka.ms/about-bot-activity-message to learn more about the message and other activity types.
 
     async def on_message_activity(self, turn_context: TurnContext):
-        await turn_context.send_activity(f"You said '{ turn_context.activity.text }'")
+        await turn_context.send_activity(f"Dijiste '{ turn_context.activity.text }'")
 
     async def on_members_added_activity(
         self,
@@ -18,4 +18,7 @@ class MyBot(ActivityHandler):
     ):
         for member_added in members_added:
             if member_added.id != turn_context.activity.recipient.id:
-                await turn_context.send_activity("Hello and welcome!")
+                await turn_context.send_activity(
+                    f"Hola Alvaro, soy el Icfes-Bot. ¿Sabías que hay más de 7.000 programas de educación superior en Colombia? ¡Estoy aquí para ayudarte a elegir uno!",
+                    f" ¿Quieres que hablemos sobre tu paso a la educación superior?"
+                )
